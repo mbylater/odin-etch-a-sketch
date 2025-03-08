@@ -1,0 +1,10 @@
+/* Turn the container into the flexbox to ensure that squares are visible */
+
+.container {
+    display: flex;
+
+}
+
+.square {
+    
+}
