@@ -1,10 +1,17 @@
 /* Turn the container into the flexbox to ensure that squares are visible */
 
 .container {
+    width: 384px;
     display: flex;
-
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* gap: 1px; */
 }
 
 .square {
-    
+    width: 24px;
+    height: 24px;
+    background-color: lightblue;
+    outline: 2px solid white;
 }
+
