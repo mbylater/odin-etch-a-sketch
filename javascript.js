@@ -45,12 +45,11 @@ function generateGrid () {
 
         // Add event for hover effect
         square.onmouseenter = function(){
-            square.id= "hover";
-        }
-
-        // square.onmouseleave = function(){
-        //     square.id= "";
-        // }
+            let randomColor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 70%)`;
+            square.style.backgroundColor = randomColor;
+            const color = window.getComputedStyle(square).backgroundColor;
+            console.log(color);
+        }        
     }   
 }
 
