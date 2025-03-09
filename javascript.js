@@ -1,24 +1,58 @@
 // Select the container
 const container = document.querySelector(".container");
 
-// Create variable to controle number of squares
-let amount = 16 * 16;
+// Create variable to controle number of squares and size
+let amountPerSide = 16;
+let amountTotal = amountPerSide * amountPerSide;
+let size = 384 / amountPerSide;
 
-// Create a loop
-for (let i=0; i<amount; i++) {
-    // Create 16x16 square of divs and append them to the container
-    const square = document.createElement("div");
-    container.appendChild(square);
+// Initiate first grid
+generateGrid();
 
-    // Add class to the square div
-    square.className = "square";
+// Select button and add event to show alert once button is pushed
+const button = document.querySelector("#sizeChoice");
+button.addEventListener("click", () => {
+    amountPerSide = prompt("How many squares do you want to see per side?")
 
-    // Add event for hover effect
-    square.onmouseenter = function(){
-    square.id= "hover";
+    if (amountPerSide > 0 && amountPerSide <100) {
+        amountTotal = amountPerSide * amountPerSide;
+        size = 384 / amountPerSide;
+    
+        clearGrid();
+
+        generateGrid();
+    } else {
+        alert("The number needs to be larger than 0 and smaller than 100.")
     }
-    square.onmouseleave = function(){
-        square.id= "";
-        }
+});
+
+// Funtion to clean old grid
+function clearGrid() {
+    container.innerHTML = '';
 }
+
+// Create a loop to generate squares
+function generateGrid () {
+    for (let i=0; i<(amountTotal); i++) {
+        // Create squares and append them to the container
+        const square = document.createElement("div");
+        container.appendChild(square);
+        square.style.width = `${size}px`;
+        square.style.height = `${size}px`;
+
+        // Add class to the square div
+        square.className = "square";
+
+        // Add event for hover effect
+        square.onmouseenter = function(){
+            square.id= "hover";
+        }
+
+        // square.onmouseleave = function(){
+        //     square.id= "";
+        // }
+    }   
+}
+
+
 
